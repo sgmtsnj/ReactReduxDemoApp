@@ -6,7 +6,7 @@ import * as TodoAppStore from '../store/TodoApp';
 
 type TodoAppProps =
     TodoAppStore.TodoAppState &
-    //typeof TodoAppStore.actionCreators &   // 未実装
+    typeof TodoAppStore.actionCreators &
     RouteComponentProps<{}>;
 
 class TodoApp extends React.PureComponent<TodoAppProps>{
@@ -17,7 +17,11 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                 <div className="input-group mb-2">
                     <input type="text" className="form-control" />
                     <div className="input-group-append">
-                        <button type="button" className="btn btn-outline-secondary">Add</button>
+                        <button type="button"
+                                className="btn btn-outline-secondary"
+                                onClick={() => { this.props.addTask(); }}>
+                                Add
+                        </button>
                     </div>
                 </div>
                 <table className='table table-striped' aria-labelledby="tabelLabel">
@@ -28,20 +32,15 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                         </tr>
                     </thead>
                     <tbody>
-                        {(typeof (this.props.Tasks) == undefined) ?
+                        {(typeof (this.props.Tasks) !== undefined) ? 
                             this.props.Tasks.map((task: TodoAppStore.Task) =>
-                                <tr>
-                                    <td>test</td>
-                                    <td>
-                                        <button type="button"
-                                            className="btn btn-outline-dark btn-sm">
-                                            Done</button>
-                                    </td>
-                                </tr>
-                            )
+                            <tr key={task.ID}>
+                                <td>{task.TaskName}</td>
+                                <td> BUTTON </td>
+                            </tr>)
                             :
                             <tr>
-                                <td>No Task</td>
+                                <td> No Task</td>
                                 <td></td>
                             </tr>
                         }
@@ -53,5 +52,6 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
 };
 
 export default connect(
-    (state: ApplicationState) => state.todoApp
+    (state: ApplicationState) => state.todoApp,
+    TodoAppStore.actionCreators
 )(TodoApp);
