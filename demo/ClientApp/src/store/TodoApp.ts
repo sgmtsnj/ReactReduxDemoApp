@@ -41,9 +41,10 @@ export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, 
     const action = incomingAction as KnownAction;
     switch (action.type) {
         case 'ADD_TASK_ITEM':
+            const newTask: string = state.Input;
             return {
-                Input: state.Input,
-                Tasks: [...state.Tasks, { ID: state.Tasks.length, TaskName: state.Input, TaskStatus: true }]
+                Input: "",
+                Tasks: [...state.Tasks, { ID: state.Tasks.length, TaskName: newTask, TaskStatus: true }]
             };
         case "UPDATE_INPUT":
             return {
