@@ -12,4 +12,5 @@ React-redux sample with ASP.NetCore
 [第4回: Redux足がかり](https://qiita.com/sgmtsnj/items/dc381c198050386008ad)
 
 [第5回: Todo App with Redux](https://qiita.com/sgmtsnj/items/239b5cada888088e6fb4)
+TAG: Section5
 
