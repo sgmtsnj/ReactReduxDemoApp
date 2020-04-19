@@ -15,19 +15,12 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
         return (
             <React.Fragment>
                 <h1>Todo App</h1>
-                    <div className="input-group mb-2">
+                <div className="input-group mb-2">
                     <input type="text" className="form-control" onChange={(ev) => this.props.updateInput(ev.target.value)} />
-                        <div className="input-group-append">
-                            <button type="button"
-                                className="btn btn-outline-secondary"
-                                onClick={() => {
-                                    this.props.addTask();
-                                }}
-                            >
-                            Add
-                            </button>
-                        </div>
+                    <div className="input-group-append">
+                        <button type="button" className="btn btn-outline-secondary" onClick={() => { this.props.addTask(); }}>Add</button>
                     </div>
+                </div>
                 <table className='table table-striped' aria-labelledby="tabelLabel">
                     <thead>
                         <tr>
@@ -36,7 +29,8 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                         </tr>
                     </thead>
                     <tbody>
-                        {(typeof (this.props.Tasks) !== undefined) ? 
+                        {
+                            (typeof (this.props.Tasks) !== undefined) ?
                             this.props.Tasks.map((task: TodoAppStore.Task) =>
                                 <tr key={task.ID}>
                                     <td>{task.TaskName}</td>
@@ -45,10 +39,10 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                                     </td>
                                 </tr>)
                             :
-                                <tr>
-                                    <td> No Task</td>
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td> No Task</td>
+                                <td></td>
+                            </tr>
                         }
                     </tbody>
                 </table>
