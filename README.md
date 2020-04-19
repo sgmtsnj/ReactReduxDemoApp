@@ -1,5 +1,5 @@
 # ReactReduxDemoApp
-React-redux sample with ASP.NetCore 
+React-redux sample with ASP.NetCore
 
 ## Qiita
 
@@ -7,11 +7,10 @@ React-redux sample with ASP.NetCore
 
 [第2回: サンプルを動かしてみよう](https://qiita.com/sgmtsnj/items/aa9b9553f9fd68ae8f4b)
 
-[第3回: 静的なところから](https://qiita.com/sgmtsnj/items/98d3fd7aee414ec8c766)
+[第3回: 静的なページをつくってみよう](https://qiita.com/sgmtsnj/items/98d3fd7aee414ec8c766)
 
-[第4回: Redux足がかり](https://qiita.com/sgmtsnj/items/dc381c198050386008ad)
+[第4回: 状態管理を学ぼう、Redux足がかり](https://qiita.com/sgmtsnj/items/dc381c198050386008ad)
 
-[第5回: Todo App with Redux](https://qiita.com/sgmtsnj/items/239b5cada888088e6fb4)
-    [TAG](https://github.com/sgmtsnj/ReactReduxDemoApp/tree/Section5_TodoApp)
+[第5回: ReduxをつかってTodoアプリを作ってみよう](https://qiita.com/sgmtsnj/items/239b5cada888088e6fb4) / [TAG](https://github.com/sgmtsnj/ReactReduxDemoApp/tree/Section5_TodoApp)
 
-
+[第6回: Coming Soon...]()
