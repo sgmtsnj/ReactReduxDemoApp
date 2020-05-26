@@ -25,6 +25,7 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                     <thead>
                         <tr>
                             <th>TASK</th>
+                            <th>STATUS</th>
                             <th></th> {/*ボタンを置くだけなので、スルー*/}
                         </tr>
                     </thead>
@@ -33,14 +34,22 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                             (typeof (this.props.Tasks) !== undefined) ?
                             this.props.Tasks.map((task: TodoAppStore.Task) =>
                                 <tr key={task.ID}>
-                                    <td>{task.TaskName}</td>
                                     <td>
-                                        <button type="button" className="btn btn-outline-dark btn-sm">DONE</button>
+                                        {(task.TaskStatus === true)?
+                                            task.TaskName
+                                            :
+                                            <s>{task.TaskName}</s>
+                                        }
+                                    </td>
+                                    <td>{task.TaskStatus.toString()}</td>
+                                    <td align="right">
+                                        <button type="button" className="btn btn-outline-dark btn-sm" onClick={() => { this.props.doneTask(task.ID); }}>DONE</button>
                                     </td>
                                 </tr>)
                             :
                             <tr>
                                 <td> No Task</td>
+                                <td></td>
                                 <td></td>
                             </tr>
                         }

@@ -12,22 +12,17 @@ export interface Task {
     TaskStatus: boolean;
 }
 
-const defaultTask = (): Task => ({
-    ID: 0,
-    TaskName: 'default',
-    TaskStatus: false
-});
-
-
 
 export interface AddTaskAction { type: 'ADD_TASK_ITEM'}
 export interface UpdateInputAction { type: 'UPDATE_INPUT', newTask: string}
+export interface DoneTaskAction { type: 'DONE_TASK', ID:number}
 
-export type KnownAction = AddTaskAction | UpdateInputAction;
+export type KnownAction = AddTaskAction | UpdateInputAction | DoneTaskAction;
 
 export const actionCreators = {
     addTask: () => ({ type: 'ADD_TASK_ITEM'} as AddTaskAction),
-    updateInput: (newTask: string) => ({ type: 'UPDATE_INPUT', newTask: newTask} as UpdateInputAction)
+    updateInput: (newTask: string) => ({ type: 'UPDATE_INPUT', newTask: newTask} as UpdateInputAction),
+    doneTask: (id: number) => ({ type: 'DONE_TASK', ID: id} as DoneTaskAction)
 };
 
 export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, incomingAction: Action): TodoAppState => {
@@ -50,7 +45,14 @@ export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, 
             return {
                 Input: action.newTask,
                 Tasks: state.Tasks
-            }
+            };
+        case "DONE_TASK":
+            const taskIndex = state.Tasks.findIndex(n => n.ID === action.ID);
+            state.Tasks[taskIndex].TaskStatus = false;
+            return {
+                Input: state.Input,
+                Tasks: [...state.Tasks]
+            };
         default:
             return state;
     }
