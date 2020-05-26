@@ -34,7 +34,7 @@ class TodoApp extends React.PureComponent<TodoAppProps>{
                             this.props.Tasks.map((task: TodoAppStore.Task) =>
                                 <tr key={task.ID}>
                                     <td>
-                                        {(task.TaskStatus === true)?
+                                        {(task.IsComplete === true)?
                                             task.TaskName
                                             :
                                             <s>{task.TaskName}</s>

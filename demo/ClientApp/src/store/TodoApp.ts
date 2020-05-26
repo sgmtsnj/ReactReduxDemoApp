@@ -9,7 +9,7 @@ export interface TodoAppState {
 export interface Task {
     ID: number,
     TaskName: string;
-    TaskStatus: boolean;
+    IsComplete: boolean;
 }
 
 
@@ -22,7 +22,8 @@ export type KnownAction = AddTaskAction | UpdateInputAction | DoneTaskAction;
 export const actionCreators = {
     addTask: () => ({ type: 'ADD_TASK_ITEM'} as AddTaskAction),
     updateInput: (newTask: string) => ({ type: 'UPDATE_INPUT', newTask: newTask} as UpdateInputAction),
-    doneTask: (id: number) => ({ type: 'DONE_TASK', ID: id} as DoneTaskAction)
+    doneTask: (id: number) => ({ type: 'DONE_TASK', ID: id} as DoneTaskAction),
+    requestToAddNewTask: ()
 };
 
 export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, incomingAction: Action): TodoAppState => {
@@ -48,7 +49,7 @@ export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, 
             };
         case "DONE_TASK":
             const taskIndex = state.Tasks.findIndex(n => n.ID === action.ID);
-            state.Tasks[taskIndex].TaskStatus = false;
+            state.Tasks[taskIndex].IsComplete = false;
             return {
                 Input: state.Input,
                 Tasks: [...state.Tasks]
