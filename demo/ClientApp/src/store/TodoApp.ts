@@ -23,7 +23,6 @@ export const actionCreators = {
     addTask: () => ({ type: 'ADD_TASK_ITEM'} as AddTaskAction),
     updateInput: (newTask: string) => ({ type: 'UPDATE_INPUT', newTask: newTask} as UpdateInputAction),
     doneTask: (id: number) => ({ type: 'DONE_TASK', ID: id} as DoneTaskAction),
-    requestToAddNewTask: ()
 };
 
 export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, incomingAction: Action): TodoAppState => {
@@ -40,7 +39,7 @@ export const reducer: Reducer<TodoAppState> = (state: TodoAppState | undefined, 
             const newTask: string = state.Input;
             return {
                 Input: "",
-                Tasks: [...state.Tasks, { ID: state.Tasks.length, TaskName: newTask, TaskStatus: true }]
+                Tasks: [...state.Tasks, { ID: state.Tasks.length, TaskName: newTask, IsComplete: true }]
             };
         case "UPDATE_INPUT":
             return {
